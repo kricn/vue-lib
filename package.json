@@ -2,7 +2,7 @@
   "name": "mnyt-vue-lib",
   "version": "0.1.0",
   "private": false,
-  "main": "lib/vue-lib.umd.min",
+  "main": "lib/vue-lib.umd.min.js",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -33,7 +33,8 @@
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
     "typescript": "~4.5.5",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vue": "^3.2.13"
   },
   "browserslist": [
     "> 1%",
