@@ -1,6 +1,7 @@
-const NODE_ENV = 'development' // 开发环境 打包doc
+const BUILD_MODE = process.env.BUILD_MODE || 'docs' // 自定义打包模式
 const path = require("path");
 // const components = require('./build/compontents.json');
+const components = require("./build/build")
 
 const baseConfig = {
   chainWebpack: config => {
@@ -16,7 +17,9 @@ const baseConfig = {
         return options
       })
     config.resolve
-    .alias.set("@/", path.join(__dirname, "./examples"))
+    .alias
+    .set("@", path.join(__dirname, "./examples"))
+    .set("@packages", path.join(__dirname, './packages'))
       
   },
   // css: {
@@ -45,16 +48,18 @@ const devConfig = {
 }
 
 const buildConfig = {
-  // configureWebpack: {
-  //   entry: components,
-  //   output: {
-  //     filename: '[name].js',
-  //     libraryTarget: 'commonjs2',
-  //   },
-  // },
-  // outputDir: 'lib',
-  // productionSourceMap: false,
-  // ...baseConfig
+  configureWebpack: {
+    entry: components,
+    output: {
+      filename: '[name].js',
+      libraryTarget: 'umd',
+      library: "MnytVueLib",
+    },
+  },
+  externals: ['vue'],
+  outputDir: 'lib',
+  productionSourceMap: false,
+  ...baseConfig
 }
 
-module.exports = NODE_ENV === 'development' ? devConfig : buildConfig;
+module.exports = BUILD_MODE === 'docs' ? devConfig : buildConfig;
