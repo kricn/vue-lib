@@ -1,4 +1,15 @@
 .k-button {
-  width: 80px;
+  width: 100px;
   height: 40px;
+  text-align: center;
+  line-height: 40px;
+  background-color: #00ccff;
+  color: #fff;  
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  transition: all .3s;
+  &:active {
+    box-shadow: 0px 0px 2px #0184ff;
+  }
 }

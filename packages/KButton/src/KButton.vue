@@ -1,7 +1,7 @@
 <template>
-  <button class="k-button">
+  <div class="k-button">
     <slot></slot>
-  </button>
+  </div>
 </template>
 
 <script lang="ts" setup>
