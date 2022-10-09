@@ -1,6 +1,10 @@
 const fs = require('fs-extra');
 const path = require('path');
 
+const whiteList = [
+  'theme-chalk'
+]
+
 function isDir(dir) {
     return fs.lstatSync(dir).isDirectory();
 }
@@ -8,26 +12,23 @@ function isDir(dir) {
 function transformStr3(str) {
     var re = /-(\w)/g;
     return str.replace(re, function ($0, $1) {
-        return $1.toUpperCase();
+      return $1.toUpperCase();
     });
 }
-
-// function firstUpperCase(str) {
-//     return str.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
-// }
 
 const json = {};
 const dir = path.join(__dirname, '../packages');
 const files = fs.readdirSync(dir);
 files.forEach(file => {
-    const absolutePath = path.join(dir, file);
-    if (isDir(absolutePath)) {
-        let fileKey = transformStr3(file.replace('orange_', ''))
-        json[fileKey] = `./packages/${file}/index.js`;
-        // json[fileKey] = `D:/projects/orange_ui/packages/${file}/index.js`;
-    }
+  const absolutePath = path.join(dir, file);
+  if (isDir(absolutePath) && !whiteList.includes(file)) {
+    let fileKey = transformStr3(file.replace('orange_', ''))
+    json[fileKey] = `./packages/${file}/index.js`;
+  }
 });
 
-module.exports = {json}
+fs.writeFileSync(path.resolve(path.join(__dirname, './components.json')), JSON.stringify(json))
 
-console.log(JSON.stringify(json));
+module.exports = { json }
+
+// console.log(JSON.stringify(json));

@@ -21,16 +21,7 @@ const baseConfig = {
     .set("@", path.join(__dirname, "./examples"))
     .set("@packages", path.join(__dirname, './packages'))
       
-  },
-  // css: {
-  //   extract: false,
-  //   loaderOptions: {
-  //     // 给 sass-loader 传递选项
-  //     sass: {
-  //       data: `@import "public/css/ui.scss";`
-  //     }
-  //   },
-  // }
+  }
 }
 
 const devConfig = {
@@ -41,9 +32,30 @@ const devConfig = {
       filename: 'index.html',
     }
   },
-
   publicPath: './',
   outputDir: 'docs',
+  configureWebpack: {
+    module: {
+      rules: [
+        {
+          test: /\.md$/,
+          use: [
+            {
+              loader: 'vue-loader',
+              options: {
+                compilerOptions: {
+                  preserveWhitespace: false
+                }
+              }
+            },
+            {
+              loader: path.resolve(__dirname, './build/md-loader/index.js')
+            }
+          ]
+        },
+      ]
+    }
+  },
   ...baseConfig
 }
 

@@ -1,3 +1,1 @@
-{
-  "KButton": "./packages/KButton/index.js"
-}
+{"button":"./packages/button/index.js"}
