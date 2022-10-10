@@ -1,9 +1,22 @@
 // const { compileTemplate } = require('@vue/component-compiler-utils');
-const { compileTemplate } = require('@vue/compiler-sfc');
+const { compileTemplate, parse } = require('@vue/compiler-sfc');
 
 function stripScript(content) {
-  const result = content.match(/<(script)>([\s\S]+)<\/\1>/);
-  return result && result[2] ? result[2].trim() : '';
+  const result = content.match(/(<script(.*?)>)([\s\S]+)<\/script>/);
+  // 统一用 export 导出
+  if (result) {
+    if (result[2].includes('setup')) {
+      return `
+        export default {
+          setup() {
+            ${result[3].trim()}
+          }
+        }
+      `
+    }
+    return result[3].trim();
+  }
+  return '';
 }
 
 function stripStyle(content) {
@@ -28,9 +41,8 @@ function pad(source) {
 }
 
 function genInlineComponentText(template, script) {
-  // https://github.com/vuejs/vue-loader/blob/423b8341ab368c2117931e909e2da9af74503635/lib/loaders/templateLoader.js#L46
   const finalOptions = {
-    source: `<div>${template}</div>`,
+    source: parse(template).descriptor.template?.content || template,
     filename: 'inline-component', // TODO：这里有待调整
   };
   const compiled = compileTemplate(finalOptions);

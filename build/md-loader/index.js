@@ -51,7 +51,7 @@ module.exports = function(source) {
     importModules = demoModulesRes.modules
     demoComponentContent = demoModulesRes.content
     const demoComponentName = `element-demo${id}`;
-    output.push(`<template slot="source"><${demoComponentName} /></template>`);
+    output.push(`<template v-slot:source><${demoComponentName} /></template>`);
     componenetsString += `${JSON.stringify(demoComponentName)}: ${demoComponentContent},`;
 
     // 重新计算下一次的位置
