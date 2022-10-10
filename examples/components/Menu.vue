@@ -1,13 +1,13 @@
 <template>
   <ul class="menu">
-    <li @click="onSwitch(item.path)" :class="['menu-item', route.name === item.name ? 'menu-item--active' : '']" :key="item.path" v-for="item in menus">
-      <a :href="'#' + item.path">{{item?.meta?.title}}</a>
+    <li @click="onSwitch(item.path)" :class="['menu-item', route.path === item.path ? 'menu-item--active' : '']" :key="item.path" v-for="item in menus">
+      <a :href="'#' + item.path">{{item?.title}}</a>
     </li>
   </ul>
 </template>
 
 <script lang="ts" setup>
-import menus from '@/router/menu'
+import menus from '@/router/menu.js'
 import { computed, watch } from '@vue/runtime-core';
 import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
@@ -22,6 +22,7 @@ const onSwitch = (path: string) => {
   width: 220px;
   position: relative;
   box-shadow: 2px 0 2px #eee;
+  padding: 40px 0;
   .menu-item {
     line-height: 40px;
     padding-left: 40px;
