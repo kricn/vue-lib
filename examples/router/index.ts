@@ -1,5 +1,7 @@
+import { nextTick } from 'vue';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import menu from './menu.js'
+import hljs from 'highlight.js';
 
 function registerRoute(navs: any[]): Array<RouteRecordRaw> {
   let routes: Array<RouteRecordRaw> = [
@@ -28,11 +30,17 @@ function registerRoute(navs: any[]): Array<RouteRecordRaw> {
 
 const routes: Array<RouteRecordRaw> = registerRoute(menu)
 
-console.log(routes)
-
 const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
+
+router.afterEach(route => {
+  // https://github.com/highlightjs/highlight.js/issues/909#issuecomment-131686186
+  nextTick(() => {
+    const blocks = document.querySelectorAll('pre code:not(.hljs)');
+    Array.prototype.forEach.call(blocks, hljs.highlightBlock);
+  });
+});
 
 export default router
