@@ -7,7 +7,7 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build:theme": "node build/gen-cssfile && gulp build --gulpfile packages/theme-chalk/gulpfile.js && cp-cli packages/theme-chalk/lib lib/theme-chalk",
-    "lib": "vue-cli-service build --target lib --name mnyt-vue-lib --BUILD_MODE lib --dest lib packages/index.js",
+    "lib": "node build/build.js && vue-cli-service build --target lib --name mnyt-vue-lib --BUILD_MODE lib --dest lib packages/index.js",
     "dist": "npm run lib && npm run build:theme"
   },
   "dependencies": {
