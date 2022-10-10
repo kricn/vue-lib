@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkmnyt_vue_lib"]=self["webpackChunkmnyt_vue_lib"]||[]).push([[687],{687:function(n,u,t){t.r(u),t.d(u,{default:function(){return f}});var e=t(252);function r(n,u){const t=(0,e.up)("k-button");return(0,e.wg)(),(0,e.j4)(t,null,{default:(0,e.w5)((()=>[(0,e.Uk)("aa")])),_:1})}var a=t(744);const c={},l=(0,a.Z)(c,[["render",r]]);var f=l}}]);
-//# sourceMappingURL=687.65f0631f.js.map
