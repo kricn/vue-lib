@@ -1,7 +1,6 @@
 const BUILD_MODE = process.env.BUILD_MODE || 'docs' // 自定义打包模式
 const path = require("path");
-// const components = require('./build/compontents.json');
-const components = require("./build/build")
+const components = require('./build/components.json');
 
 const baseConfig = {
   chainWebpack: config => {
