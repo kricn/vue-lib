@@ -1,8 +1,18 @@
-通过设置`effect`属性来改变主题，默认为`light`。
-:::demo
+## 按钮a
+这是一个按钮
+:::demo 这是一个按钮
 ```html
 <template>
-  <k-button>aaa</k-button>
+  <k-button @click="onClick">aadda</k-button>
 </template>
+
+<script setup>
+  const onClick = () => {
+    console.log('a')
+  }
+  return {
+    onClick
+  }
+</script>
 ```
 :::
