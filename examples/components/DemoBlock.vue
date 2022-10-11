@@ -9,7 +9,7 @@
       <slot name="source"></slot>
     </div>
     <div class="meta" ref="meta">
-      <div class="description" ref="description" v-if="$slots.default()">
+      <div class="description" ref="description" v-if="$slots.default">
         <slot></slot>
       </div>
       <div class="highlight" ref="highlight">
@@ -21,8 +21,11 @@
       ref="control"
       :class="{ 'is-fixed': fixedControl }"
       @click="isExpanded = !isExpanded">
-      <transition name="arrow-slide">
-        <i :class="[iconClass, { 'hovering': hovering }]">aa</i>
+      <transition>
+        <i :class="[iconClass, { 'hovering': hovering }]"></i>
+      </transition>
+      <transition name="text-slide">
+        <span :class="[{ 'hovering': hovering }]">{{ controlText }}</span>
       </transition>
     </div>
   </div>
@@ -48,8 +51,8 @@ const fixedControl = ref<boolean>(false);
 const scrollParent = ref<null | HTMLDivElement>(null);
 
 const blockClass = computed(() => `demo-${ route.path.split('/').pop() }`);
-const iconClass = computed(() => isExpanded.value ? 'el-icon-caret-top' : 'el-icon-caret-bottom');
-const controlText = computed(() => isExpanded.value ? '隐藏' : '显示');
+const iconClass = computed(() => isExpanded.value ? 'k-icon-caret-top' : 'k-icon-caret-bottom');
+const controlText = computed(() => isExpanded.value ? '隐藏代码' : '显示代码');
 const codeAreaHeight = computed(() => {
   if (description.value) {
     return description.value.clientHeight +
@@ -96,7 +99,6 @@ onMounted(() => {
       highlight.value!.style.borderRight = 'none';
     }
   })
-  console.log((slots.default as Function)())
   return () => {
     removeScrollHandler()
   }
@@ -211,23 +213,21 @@ onMounted(() => {
     }
 
     > span {
-      position: absolute;
-      transform: translateX(-30px);
+      transform: translateX(10px);
       font-size: 14px;
       line-height: 44px;
       transition: 0.3s;
       display: inline-block;
+      opacity: 0;
+      &.hovering {
+        transform: translateX(-30px);
+        opacity: 1;
+      }
     }
 
     &:hover {
       color: #409eff;
       background-color: #f9fafc;
-    }
-
-    & .text-slide-enter,
-    & .text-slide-leave-active {
-      opacity: 0;
-      transform: translateX(10px);
     }
 
     .control-button {
