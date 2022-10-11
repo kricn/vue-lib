@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "libicon"; /* Project id 3696236 */
+  src: url('./fonts/iconfont.woff2') format('woff2'),
+       url('./fonts/iconfont.woff') format('woff'),
+       url('./fonts/iconfont.ttf') format('truetype');
+}
+
+[class^="k-icon-"], [class*=" k-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'libicon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.k-icon-caret-bottom:before {
+  content: "\e642";
+}
+
+.k-icon-caret-top:before {
+  content: "\e643";
+}
+
+.k-icon-close-circle:before {
+  content: "\e605";
+}
+
+.k-icon-heart:before {
+  content: "\e608";
+}
+
+.k-icon-link:before {
+  content: "\e609";
+}
+
+.k-icon-menu-unfold:before {
+  content: "\e60b";
+}
+
