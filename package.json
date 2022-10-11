@@ -1,6 +1,6 @@
 {
   "name": "mnyt-vue-lib",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "main": "lib/vue-lib.umd.min.js",
   "scripts": {
