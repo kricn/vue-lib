@@ -4,6 +4,10 @@ const nav = [
     path: "/installtion"
   },
   {
+    title: '图标',
+    path: '/icon'
+  },
+  {
     title: '按钮',
     path: "/button"
   }
