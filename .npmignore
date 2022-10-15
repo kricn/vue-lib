@@ -28,6 +28,7 @@ packages/
 public/
 src/
 util/
+docs/
 vue.config.js
 babel.config.js
 *.map
