@@ -2,7 +2,7 @@
   "name": "mnyt-vue-lib",
   "version": "0.1.3",
   "private": false,
-  "main": "lib/vue-lib.umd.min.js",
+  "main": "lib/mnyt-vue-lib.umd.min.js",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
