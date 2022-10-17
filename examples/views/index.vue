@@ -24,6 +24,7 @@ import Menu from "@/components/Menu.vue";
     margin: auto;
     height: 100%;
     padding-top: 70px;
+    padding-left: 220px;
     .content {
       padding: 20px;
       .content {

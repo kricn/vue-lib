@@ -20,9 +20,12 @@ const onSwitch = (path: string) => {
 <style lang="scss">
 .menu {
   width: 220px;
+  height: calc(100vh - 70px);
   position: relative;
   box-shadow: 2px 0 2px #eee;
   padding: 40px 0;
+  position: fixed;
+  left: 0; top: 70px;
   .menu-item {
     line-height: 40px;
     padding-left: 40px;
@@ -31,9 +34,14 @@ const onSwitch = (path: string) => {
     font-size: 14px;
     cursor: pointer;
     position: relative;
+    a {
+      color: #333;
+    }
     &.menu-item--active {
       background-color: rgba(175, 236, 255, 0.4);
-      color: #00b7ff;
+      a {
+        color: #00b7ff;
+      }
       &::after {
         position: absolute;
         right: 0; top: 0;
